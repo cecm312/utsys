@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+       
+<form class="col s12 m10 offset-m1 l8 offset-l2 newClient" data-redirect="true">
+    
+    <h4>Nuevo Usuario</h4>
+    <div class="row">
+        <input name="module" type="hidden" value="profile">
+        <input name="action" type="hidden" value="addClient">
+        <div class="input-field col s12 m12 l12 ">
+            <input placeholder="Nombre" id="nombre" name="nombre" type="text" class="validate" required>
+        </div>
+        <div class="input-field col s12 m12 l12 ">
+            <input placeholder="Apellidos" id="apellido" name="apellido" type="text" class="validate" required>
+        </div>
+        
+        <div class="input-field col s12 m12 l12 ">
+            <input type="date" class="datepicker" name="fech_nac" id="fecha_nac" required>
+        </div>
+        
+        <div class="input-field col s12 m12 l12 ">
+            <input placeholder="Correo" type="email" name="correo" id="correo" required>
+        </div>
+        
+        
+         <div class="input-field col s12 m12 l12 ">
+           <textarea placeholder="Domicilio" id="domicilio" name="domicilio" class="materialize-textarea" required></textarea>
+        </div>
+        
+        <div class="input-field col s12 m12 l12 ">
+            <input placeholder="Numero de Telefono" type="number" name="telefono" id="telefono">
+        </div>
+        
+        
+
+        <div class="input-field col s12 m12 l12 ">
+            <input placeholder="Usuario" id="usuario" name="cuenta" type="text" class="validate" required>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+            <input placeholder="Contraseña" id="contra" name="contrasena" type="password" class="validate" required>
+        </div>
+        <div class="input-field col s12">
+            <button class="btn waves-effect waves-light light-green col s12" type="submit">Registrarse
+            </button>
+        </div>
+    </div>
+</form>
+    </div>
+    </div>

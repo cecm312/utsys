@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+VARIABLES GLOBALES "AGREGAR LLAVES A LOS LADOS"
+LIBS_DIR
+MODULES_DIR
+UPLOADS_DIR
+CONTAINER
+MODULE_CSS_DIR
+MODULE_JS_DIR
+MODULE_IMG_DIR
+SITE_CSS_DIR
+SITE_JS_DIR
+SITE_IMG_DIR
+-->
+
+<html>
+    <head>
+        <title>Compuinova</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{LIBS_DIR}materialize/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <link href="{SITE_CSS_DIR}site.css" rel="stylesheet" type="text/css"/>
+
+        <script src="{LIBS_DIR}jquery/jquery-2.1.4.js" type="text/javascript"></script>
+        <script src="{LIBS_DIR}materialize/js/materialize.min.js" type="text/javascript"></script>
+        <script src="{SITE_JS_DIR}site.js" type="text/javascript"></script>
+        <script src="{SITE_JS_DIR}system.js" type="text/javascript"></script>
+        <script src="{LIBS_DIR}sweetalert/sweetalert.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <header>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s3 m3 l3 offset-s9">
+                        <img class="responsive-img" src="{SITE_IMG_DIR}logo.jpg" alt="logo">
+                    </div>
+                    <div class="col m9 l9 center-align">
+                        <h4>Centro de Servicio, soporte tecnico, compra, venta y mantenimiento a equipo de computo</h4>
+                    </div>
+                </div>
+            </div>
+            <nav class="light-green">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="?" class="brand-logo"></a>
+                        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="?">Inicio</a></li>
+                            <li><a href="?page=nosotros">Nosotros</a></li>
+                            <li><a href="?page=servicios">Servicios</a></li>
+                            <li><a href="?page=contacto">Contactanos</a></li>
+                            <li><a href="?module=store">Tienda en linea</a></li>
+                        </ul>
+                        <ul class="right side-nav" id="nav-mobile">
+                            <li><a href="?">Inicio</a></li>
+                            <li><a href="?page=nosotros">Nosotros</a></li>
+                            <li><a href="?page=servicios">Servicios</a></li>
+                            <li><a href="?page=contacto">Contactanos</a></li>
+                            <li><a href="?module=store">Tienda en linea</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            {CONTAINER}
+        </main>
+        <footer class="page-footer light-green">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Visitanos en Nuestras Redes Sociales</h5>
+                        <div class="row">
+                            <div class="col s2 m1 l2">
+                                <a href="https://www.facebook.com/profile.php?id=100009710413661&__mref=message_bubble" target="_blank"><img class="responsive-img" src="{SITE_IMG_DIR}fb_icon.png" alt="logo"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Mapa del Sitio</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="?">Inicio</a></li>
+                            <li><a class="grey-text text-lighten-3" href="?page=nosotros">Nosotros</a></li>
+                            <li><a class="grey-text text-lighten-3" href="?page=servicios">Servicios</a></li>
+                            <li><a class="grey-text text-lighten-3" href="?page=contacto">Contactanos</a></li>
+                            <li><a  class="grey-text text-lighten-3"href="?module=store">Tienda en linea</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © Derechos Reservados
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>
