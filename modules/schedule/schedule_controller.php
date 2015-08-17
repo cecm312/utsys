@@ -10,6 +10,15 @@ switch ($action){
     case "default":
         $html= $objScheduleView->print_layout();
         break;
+    case "saveModule":
+        echo json_encode($objSchedule->save_module($_POST));
+        break;
+    case "saveSchedule":
+        echo json_encode($objSchedule->save_schedule($_POST));
+        break;
+    case "getSchedule":
+        echo json_encode($objSchedule->get_schedule($_POST));
+        break;
 }
 
 ?>

@@ -1,47 +1,46 @@
-<form id="form_new_product" class="col s12 m12 l12">
+<form id="form_new_schedule" class="col s12 m12 l12">
         
         <div class="row">
             
            <div class="input-field col s12 m3 l3">
-                <select id="categoria" name="categoria" class="materializeSelect">
-                    <option value="">Selecciona un Profesor</option>
+                <select name="idprofesor" class="chosen schedule_params" data-placeholder="Selecciona un profesor" required>
+                    <option></option>
                     {OPTIONS_TEACHERS}
                 </select>
                 <!--<a class="btn waves-effect btn col s12 m6 l6 offset-l6 offset-m6 modal-trigger" href="#modalAddCategory">Agregar Categoria</a>-->
             </div>
              <div class="input-field col s12 m3 l3">
-                <select id="categoria" name="categoria" class="materializeSelect">
-                    <option value="">Selecciona una Materia</option>
+                <select name="idmateria" class="chosen schedule_params" data-placeholder="Selecciona una Materia" required>
+                    <option></option>
                     {OPTIONS_SUBJECT}
                 </select>
                 <!--<a class="btn waves-effect btn col s12 m6 l6 offset-l6 offset-m6 modal-trigger" href="#modalAddCategory">Agregar Categoria</a>-->
             </div>
             
             <div class="input-field col s12 m3 l3">
-                <select id="categoria" name="categoria" class="materializeSelect">
-                    <option value="">Selecciona un Grupo</option>
+                <select name="idgrupo" class="chosen schedule_params" data-placeholder="Selecciona un Grupo" required>
+                    <option></option>
                     {OPTIONS_GROUPS}
                 </select>
             </div>
             
             <div class="input-field col s12 m3 l3">
-                <select id="categoria" name="categoria" class="materializeSelect">
-                    <option value="">Selecciona un Dia</option>
+                <select name="iddia" class="chosen schedule_params" data-placeholder="Selecciona un Dia" required>
+                    <option></option>
                     {OPTIONS_DAYS}
                 </select>
+                
             </div>
            
             <div class="input-field col s12 m3 l3">
-                <select id="categoria" name="categoria" class="materializeSelect">
-                    <option value="">Selecciona un Modulo</option>
+                <select name="idmodulo" id="select_modulo" class="chosen schedule_params" data-placeholder="Selecciona un modulo" required>
+                    <option></option>
                     {OPTIONS_MODULE}
                 </select>
-                <a class="btn waves-effect btn col s12 m6 l6 offset-l6 offset-m6 modal-trigger" href="#modalAddCategory">Agregar Categoria</a>
+                <a class="btn waves-effect btn col s12 m12 l12 modal-trigger" data-modal="#modal1">Añadir Modulo</a>
             </div>
-            
-            
+            <div class="input-field col s12 m3 l3 offset-l6 offset-m6">
+                <button class="btn waves-effect btn col s12 m12 l12" type="submit">Añadir nuevo Horario</button>
+            </div>
         </div>
-
-
-
     </form>
