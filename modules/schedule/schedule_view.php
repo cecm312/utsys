@@ -30,6 +30,9 @@ class ScheduleView extends View{
                 "OPTIONS_MODULE"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_modules(),"idmodulo","tiempo"))
                 );
             $html=$this->print_template("panel_asignation", $keys);
+        }else{
+            $keys=array("ID_PROFESOR"=>$objProfile->idperfil);
+            $html=$this->print_template("panel_default", $keys);
         }
         return $html;    
     }

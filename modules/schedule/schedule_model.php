@@ -27,11 +27,71 @@ class Schedule extends DBModel{
         }
         return array("result"=>$result,"idmodule"=>$idmodule);
     }
-    public function get_schedule($params){
-        
-        return array(array( "title"  => 'event1',
-            "start"  => '2015-08-17T08:20'));
+    public function get_schedule($params){    
+        $arraytemp=array();
+        if(isset($params["idprofesor"]) and $params["idprofesor"]!=""){
+            $where=  $this->create_where($params);
+            $this->query="SELECT ".
+                "d.iddia, ".
+                "m.hora_inicio, ".
+                "m.hora_fin, ".
+                "mat.nombre as materia, ".
+                "per.nombre as profesor, ".
+                "g.nombre as grupo ".
+            "FROM ".
+                "horario AS h ".
+                "INNER JOIN dia AS d ON h.iddia = d.iddia ".
+                "INNER JOIN modulo AS m ON h.idmodulo = m.idmodulo ".
+                "INNER JOIN profesor AS p ON h.idprofesor = p.idperfil ".
+                "INNER JOIN materia AS mat ON h.idmateria = mat.idmateria ".
+                "INNER JOIN perfil AS per ON p.idperfil = per.idperfil ".
+                "INNER JOIN grupo AS g ON h.idgrupo = g.idgrupo".$where;
+            $this->get_all_results_query();
+            $monday= date_create(date("Y-m-d"));
+            $int = intval(date("w"))-1;
+            $intervalo=new DateInterval("P".$int."D");
+            $intervalo->invert=1;
+            $monday->add($intervalo);
+            $intervalo=new DateInterval("P1D");
+            for($i=1;$i<=6;$i++){
+                foreach ($this->rows as $key => $value) {
+                    if($i==$value["iddia"]){
+                        array_push($arraytemp,array(
+                            "title"=>$value["grupo"]." - ".$value["materia"],
+                            "start"=>  date_format($monday,"Y-m-d")."T".$value["hora_inicio"],
+                            "end"=>date_format($monday,"Y-m-d")."T".$value["hora_fin"]
+                        ));
+                    }
+                }
+                $monday->add($intervalo);
+            }
+        }
+        return $arraytemp;
     }
+    public function create_where($params){
+        $filterarray=array();
+        if(isset($params["idprofesor"]) and $params["idprofesor"]!=""){
+            array_push($filterarray, "h.idprofesor='". $params["idprofesor"]."'");
+        }
+        if(isset($params["idmateria"]) and $params["idmateria"]!=""){
+            array_push($filterarray, "h.idmateria='". $params["idmateria"]."'");
+        }
+        if(isset($params["idgrupo"]) and $params["idgrupo"]!=""){
+            array_push($filterarray, "h.idgrupo='". $params["idgrupo"]."'");
+        }
+        if(isset($params["iddia"]) and $params["iddia"]!=""){
+           array_push($filterarray, "h.iddia='". $params["iddia"]."'");
+        }
+        if(isset($params["idmodulo"]) and $params["idmodulo"]!=""){
+           array_push($filterarray, "h.idmodulo='". $params["idmodulo"]."'");
+        }
+        $where="";
+        if(count($filterarray)>0){
+            $where=" WHERE ".implode(" and ", $filterarray);
+        }
+        return $where;
+    }
+    
     
     public function save_schedule($params){
         foreach ($params as $field=>$valor){

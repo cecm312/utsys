@@ -30,19 +30,23 @@ $(function() {
         hiddenDays: [0],
         aspectRatio: 2,
         events: function(start, end, timezone, callback) {
-            var datos={module:"schedule",action:"getSchedule"};
+            var datos=$("#form_new_schedule").serializeArray();
+            datos.push({name:"module",value:"schedule"});
+            datos.push({name:"action",value:"getSchedule"});
             $.ajax({
                 url: "index.php?",
                 dataType: "json",
                 data: datos,
                 type: "POST",
                 success: function(data) {
+                    
                     var events = [];
                     $.each(data,function() {
                         console.log(this);
                         events.push({
                             title: this.title,
-                            start: this.start
+                            start: this.start,
+                            end: this.end
                         });
                     });
                     callback(events);
@@ -92,7 +96,8 @@ var saveSchedule = function(form) {
         success: function(data) {
             if (data.result) {
                 swal({title: "Modulo Agregado", text: "El modulo fue agregado corectamente", type: "success"}, function() {
-
+                    $('#calendar').fullCalendar('refetchEvents');
+                    
                 });
             }
         }
