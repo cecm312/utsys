@@ -17,12 +17,18 @@ class ScheduleView extends View{
         $keys=array("PANEL_ASIGNATION"=>$html);
         return $this->print_template("container", $keys);
     }
+    
     public function print_panel_asignation(){
-        global $objProfile;
+        global $objProfile,$objSchedule;
         $html="";
-        echo $objProfile->tipo;
         if(in_array($objProfile->tipo, $this->userAsignationGranted)){
-            $keys=array("LAYOUT"=>"");
+            $keys=array(
+                "OPTIONS_TEACHERS"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_teachers(),"idperfil","nombre")),
+                "OPTIONS_SUBJECT"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_subjects(),"idperfil","nombre")),
+                "OPTIONS_GROUPS"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_teachers(),"idperfil","nombre")),
+                "OPTIONS_DAYS"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_teachers(),"idperfil","nombre")),
+                "OPTIONS_MODULE"=>$this->create_options($objSchedule->get_select_data($objSchedule->get_teachers(),"idperfil","nombre"))
+                );
             $html=$this->print_template("panel_asignation", $keys);
         }
         return $html;    
